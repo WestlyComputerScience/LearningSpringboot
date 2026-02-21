@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class QuickstartApplicationTests {
 
     @Test
-    void contextLoads() {
+    void contextLoads() { // checks if our content loads
     }
 
 }
