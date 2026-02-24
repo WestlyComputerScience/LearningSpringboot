@@ -190,6 +190,7 @@ public class ApplicationConfig {
         return new JdbcAccountRepository(...);
     }
 }
+
 Then on the service level, we can...
 
 @Service
@@ -302,5 +303,55 @@ public class DefaultPaymentService {
             return ...
         }
     }
+
+====== BEAN PROFILES
+
+// Spring Component
+@Service
+@Profile("cloud") // only available on the profile "cloud"
+public class DefaultPaymentService implements PaymentService{}
+
+====== VALUE ANNOTATION
+ - helps inject certain properties (i.e. this URL)
+@Value ("${jdbc.url}")
+private string url;
+
+ - or
+
+ @Value("#{systemProperties['user.region']}")
+ public void setDefaultLocale(String defaultLocale) {
+    this.defaultLocale = defaultLocal;
+}
+
+====== GOOD PRACTICES FOR SPRING FRAMEWORK ....
+
+=== SPLIT CONFIGURATION
+ - splits classes based on architecture
+ - classes can import each other
+
+=== SPRING BOOT?
+ - an approach to develop spring-based applications with minimal or no configurations
+ - provides a set of starter build files
+ - comes with a lot of auto-configuration, auto-configures required classes
+ - why?
+ - comes with standalone applications
+ - embeded servers (no need to deploy WAR files)
+ - starters
+ - autoconfiguration
+ - production-ready feature
+ - no xml configuration
+
+ - metadata for project
+ - group (for the group id of the company, i.e. meta)
+ - artifact (for the subcompany, i.e. instagram/facebook)
+ - JAR = java archive
+ - WAR = web archive
+ - SDK = software development kit
+
+====== PROJECT STRUCTURE
+ - static in src/resources folder (if we want static files like HTML files or build UI for restAPI
+ - application.properties in src/resources has file extension properties
+
+// Note: the banner.txt in resources lets a person know what service they're starting
 
  */
