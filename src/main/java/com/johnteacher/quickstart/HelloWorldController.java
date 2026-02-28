@@ -354,4 +354,68 @@ private string url;
 
 // Note: the banner.txt in resources lets a person know what service they're starting
 
+
+// ======== SPRING REST
+ - REST = Representation State Transfer
+ - first defined by Roy Fielding in 2000 paper, the main idea is to treat network resources as an object accessed by standard HTTP methods
+ - - Client-Server Architecture (should act independently, can interact with each other, developed independently)
+ - - stateless (each HTTP request that happens from client to server should contain all necessary information to understand and
+                respond to the request, aka server shouldn't store any data between requests which keeps each requests isolated
+                and independent)
+ - - cacheable (restful architecture allows clients to cache response, which responses need to define themselves as cachable or not to not allow clients reusing or using outdated data)
+ - - Layered System (client cannot tell if it's connected to the end server or to an intermediary. each can include security measures and load balancing)
+ - - Code on Demand (optional) (allows server to extend functionality of a client by transferring executable code)
+ - - Uniform Interface (simplifies architecture, enables each part to evolve independently)
+ - - - 4 guiding principles
+ - - - - identification of resources
+ - - - - manipulation of resource through these representations
+ - - - - self-descriptive messages
+ - - - - Hypermedia As The Engine Of Application State (HATEOS)
+ - - Web Architectural Principles
+ - - Unique Identification of resources (URI)
+ - - Different resource representation
+ - - Hypermedia / Linking of Resources
+ - - Stateless Communication
+ - - Standard Methods (GET, POST, PUT, DELETE) and responses (200 OK, 404 Not Found)
+
+ when making a RESTful API there are some standards to follow
+ - resource should always be plural nouns in the API endpoint and if one instance resource should be retrieved, pass id in URL:
+ - - examples:
+ - - - GET /accounts
+ - - - GET /accounts/1
+ - - - DELETE /accounts/2
+ - in case of nested resources (resources under a resource), the resources should be accessible as follows:
+ - - GET /accounts/1/payements/56
+ - Use the HTTP methods to specify what to do with this resource. With methods GET, POST, PUT, PATCH, DELETE, you can provide
+   CRUD functionality (Create, Read, Update, Delete)
+ - USE HTTP methods (aka "verbs") to specify what to do with this resource.
+
+ - when implemented RESTful APIs, we have response status codes (HTTP status codes, 3-digit HTTP response indicating outcome made by the client)
+ - 1XX (informational)
+ - 2XX (success)
+ - - 200 OK (standard response for successful HTTP request. Everything went as planned, result data included in response)
+ - - 201 CREATED (request was successful and a new resource was created as a result)
+ - - 204 NO CONTENT (server successful processed the request and there's no additional content to send.
+                     I did what you asked and you're done, or server no want to return information)
+ - 3XX (redirection)
+ - - 304 NOT MODIFIED (Used for caching purposes, when a client sends request to server,
+                       can include a header such as "if modified since" or "if none-match" etc. used to ask
+                       the servers to validate if the clients cached version of the resource is still up to date.
+                       If modified since, use a timestamp to determine if resource has been updated since last client request)
+                       (can use this to make sure you're not resending resources the client has already cached)
+ - 4XX (client error category)
+ - - 400 BAD REQUEST (server was unable to understand request due to invalid syntax)
+ - - 401 UNAUTHORIZED (the request requires user authentication.
+                       If already provided, then that implies authorization has been
+                       refused due to wrong password/username or privileges)
+ - - 403 FORBIDDEN (client doesn't have permission for requested resource. Or if server
+                    doesn't want to reveal why request has been refused or no other responses are applicable)
+ - 5XX (server error)
+ - - 500 INTERNAL SERVER ERROR (unexpected condition was encountered by the server and no specific message
+                                was suitable. aka something has gone wrong on the server itself for a variety of reasons)
+ - - 503 SERVICE UNAVAILABLE (server is currently unavailable to handle requests since it's temporary overloading or down for maintenance .
+
+ - to specify the response status of a controller method, annotate the method with @ResponseStatus
+ - - spring only uses @ResponseStatus when the marked method completes successfully (without throwing an exception)
+
  */
