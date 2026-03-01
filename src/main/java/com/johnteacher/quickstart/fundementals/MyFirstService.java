@@ -1,4 +1,4 @@
-package com.johnteacher.quickstart;
+package com.johnteacher.quickstart.fundementals;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
-
+/*
 // contains business logic
 // implements business rules, coordinates repositories, handles transactions
 @Service
@@ -14,8 +14,9 @@ import org.springframework.stereotype.Service;
         @PropertySource("classpath:custom.properties"),
         @PropertySource("classpath:custom-file-2.properties")
 }) // allows us to read from our custom properties file we made
+*/
 public class MyFirstService {
-
+/*
     // === CONSTRUCTOR INJECTION (BEST WAY) ===
 //    private final MyFirstClass myFirstClass; // "final" makes sure it cannot be modified
 
@@ -108,5 +109,5 @@ public class MyFirstService {
     // -dev tag will replace anything normal.
     // i.e. application.properties loads, then spring sees application-dev.properties
     // it will then overwrite application.properties with application-dev.properties
-
+*/
 }

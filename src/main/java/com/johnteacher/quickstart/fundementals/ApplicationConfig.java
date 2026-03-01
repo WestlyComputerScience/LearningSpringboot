@@ -1,4 +1,4 @@
-package com.johnteacher.quickstart;
+package com.johnteacher.quickstart.fundementals;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
-@Configuration // Let's spring know to scan this class upon startup
+//@Configuration // Let's spring know to scan this class upon startup
 public class ApplicationConfig {
-
+/*
     // if no @Bean, then we get a no such bean exception. Instead, we could mark our class as @Component to not need @bean.
     // Bean("myBean")
     @Bean
@@ -38,5 +38,5 @@ public class ApplicationConfig {
     public MyFirstClass myFourthBean() {
         return new MyFirstClass("Fourth Bean");
     }
-
+*/
 }
