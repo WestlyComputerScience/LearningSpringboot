@@ -1,0 +1,41 @@
+# spring.application.name=quickstart
+# configurations go here
+
+# == INITIAL LEARNING ==
+# sets dev as the active profile
+# order matters, loads dev 1st, then test, and then custom (so the last to load will be used, lol)
+# spring.profiles.active=dev,test,custom
+
+# my.custom.property = Westly's Custom Property
+# my.custom.property.int = 123
+# ======================
+
+# renamed file to application.yaml instead of application.properties
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demo_db
+    username: postgres
+    password: L@KEhouse11
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      # ddl = data definition language (behavior for hibernate to do when we start the application)
+      # "create" destroys old data upon waking from hibernation (good for testing)
+      # "create-drop" create then destroy schema at end of the session
+      # "none" disable DDL handling (i.e. in production we wanted to use a database migration tool)
+      # "update" update the schema if changes occur
+      # "validate" validates the schema and makes no changes to the database (assumes we're using a database migration tool)
+      ddl-auto: create
+    # shows us the table we created
+    show-sql: true # when we run the application and try to run a query, we'll see the query displayed in the console
+    # if we have an SQL query, we can format it to be nicely dsiplayed
+    properties:
+      hibernate:
+        # the query is formatted for us
+        format_sql: true
+    # tries to autodetect the database we're using
+    database: postgresql
+    # specifies the hibernate dialect for the database
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
