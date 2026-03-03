@@ -1,5 +1,6 @@
 package com.johnteacher.quickstart;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,6 +36,12 @@ public class SecondController {
     @GetMapping("/students/search/{student-name}")
     public List<Student> findStudentByName(@PathVariable("student-name") String studentName) {
         return studentRepository.findAllByFirstNameContaining(studentName);
+    }
+
+    @DeleteMapping("/students/{student-id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("student-id") Integer id) {
+        studentRepository.deleteById(id); // deletes the specified student by ID
     }
 
 }

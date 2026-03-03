@@ -28,6 +28,10 @@ public class Student {
     @Column(updatable = false, insertable = false) // don't want the creation date to be updateable
     private String creation_date;
 
+    // tell hybernate it's a 1-1 relationship with Profile
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL) // cascade = if I delete the student, then I'll also remove the student profile
+    private Profile studentProfile;
+
     // ID shouldn't be in constructor since it's automatically generated. creation_date as well since it's not insertable
     public Student(String firstName, String lastName, String email, int age) {
         this.firstName = firstName;
