@@ -25,7 +25,8 @@ spring:
       # "none" disable DDL handling (i.e. in production we wanted to use a database migration tool)
       # "update" update the schema if changes occur
       # "validate" validates the schema and makes no changes to the database (assumes we're using a database migration tool)
-      ddl-auto: create
+      # We're now using update since we don't want to lose data each time
+      ddl-auto: update
     # shows us the table we created
     show-sql: true # when we run the application and try to run a query, we'll see the query displayed in the console
     # if we have an SQL query, we can format it to be nicely dsiplayed

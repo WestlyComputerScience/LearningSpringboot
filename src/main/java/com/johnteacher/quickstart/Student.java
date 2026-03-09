@@ -1,5 +1,6 @@
 package com.johnteacher.quickstart;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 // Note: based on uniqueness and insertion information, be careful with duplicate data!
@@ -25,12 +26,17 @@ public class Student {
     private String email;
     private int age;
     // insertable false makes sure we can't insert a value into this field
-    @Column(updatable = false, insertable = false) // don't want the creation date to be updateable
+    @Column(updatable = false, insertable = false) // don't want the creation date to be updatable
     private String creation_date;
 
     // tell hybernate it's a 1-1 relationship with Profile
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL) // cascade = if I delete the student, then I'll also remove the student profile
     private Profile studentProfile;
+
+    @ManyToOne
+    @JoinColumn(name = "school_id") // if it says cannot find, manually right-click and refresh database (I've fallen for this error twice now)
+    @JsonBackReference // Tells JSON this entity doesn't need to serialize the parent (school)
+    private School school;
 
     // ID shouldn't be in constructor since it's automatically generated. creation_date as well since it's not insertable
     public Student(String firstName, String lastName, String email, int age) {
@@ -82,5 +88,13 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
 }

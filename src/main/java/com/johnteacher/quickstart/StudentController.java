@@ -6,13 +6,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class SecondController {
+public class StudentController {
 
     private final StudentRepository studentRepository;
+    private final StudentMapper studentMapper; // don't forget to inject these variables in constructor to provide access to their methods
 
     // injects the StudentRepository to access student table in the database
-    public SecondController(StudentRepository studentRepository) {
+    public StudentController(StudentRepository studentRepository, StudentMapper studentMapper) {
         this.studentRepository = studentRepository;
+        this.studentMapper = studentMapper;
     }
 
     @GetMapping("/students")
@@ -21,8 +23,11 @@ public class SecondController {
     }
 
     @PostMapping("/students")
-    public Student post(@RequestBody Student student) {
-        return studentRepository.save(student); // student will be persisted (saved into a database)
+    public StudentResponseDTO post(@RequestBody StudentDTO dto) { // StudentDTO since we want to not release sensitive information
+        Student student = studentMapper.toStudent(dto);
+        // return studentRepository.save(student); // student will be persisted (saved into a database)
+        var savedStudent = studentRepository.save(student); // stored only necessary info (hides school ID)
+        return studentMapper.toStudentResponseDTO(savedStudent); // now we return an even more secure response
     }
 
     @GetMapping("/students/{student-id}")
