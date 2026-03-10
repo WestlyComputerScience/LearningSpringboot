@@ -1,6 +1,7 @@
 package com.johnteacher.quickstart;
 
 // Allows us to hide the student ID etc. from the API accessing them. It only gives this information.
+// automatically generates setters and getters via a Java Record file
 public record StudentDTO(
         String firstName,
         String lastName,

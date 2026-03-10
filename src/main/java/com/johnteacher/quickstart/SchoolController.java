@@ -11,32 +11,20 @@ import java.util.stream.Collectors;
 @RestController // signals this class is meant to handle HTTP requests!
 public class SchoolController {
 
-    private final SchoolRepository schoolRepository;
+    private final SchoolService schoolService;
 
-    public SchoolController(SchoolRepository schoolRepository) {
-        this.schoolRepository = schoolRepository;
+    public SchoolController(SchoolService schoolService) {
+        this.schoolService = schoolService;
     }
 
     @PostMapping("/schools")
     public SchoolDTO createSchool(@RequestBody SchoolDTO dto) {
-        School school = toSchool(dto);
-        schoolRepository.save(school); // save the school to repository
-        return dto; // Spring converts the returned object into JSON format
-    }
-
-    private School toSchool(SchoolDTO dto) {
-        return new School(dto.name());
-    }
-
-    // converts School into DTO
-    private SchoolDTO toSchoolDTO(School school) {
-        return new SchoolDTO(school.getName());
+        return this.schoolService.createSchool(dto);
     }
 
     @GetMapping("/schools")
     public List<SchoolDTO> getSchools() {
-        // interesting, calls a finalALL(), but applies a method to the stream, lol
-        return schoolRepository.findAll().stream().map(this::toSchoolDTO).collect(Collectors.toList()); // finds all JSON school objects
+       return this.schoolService.getSchools();
     }
 
 }
