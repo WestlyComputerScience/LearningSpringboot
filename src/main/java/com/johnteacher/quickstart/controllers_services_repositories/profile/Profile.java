@@ -1,5 +1,6 @@
-package com.johnteacher.quickstart;
+package com.johnteacher.quickstart.controllers_services_repositories.profile;
 
+import com.johnteacher.quickstart.controllers_services_repositories.student.Student;
 import jakarta.persistence.*;
 
 @Entity

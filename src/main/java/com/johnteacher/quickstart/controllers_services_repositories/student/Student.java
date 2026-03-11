@@ -1,6 +1,8 @@
-package com.johnteacher.quickstart;
+package com.johnteacher.quickstart.controllers_services_repositories.student;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.johnteacher.quickstart.controllers_services_repositories.profile.Profile;
+import com.johnteacher.quickstart.controllers_services_repositories.school.School;
 import jakarta.persistence.*;
 
 // Note: based on uniqueness and insertion information, be careful with duplicate data!

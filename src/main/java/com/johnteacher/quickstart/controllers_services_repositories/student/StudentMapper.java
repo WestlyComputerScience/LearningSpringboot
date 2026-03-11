@@ -1,5 +1,6 @@
-package com.johnteacher.quickstart;
+package com.johnteacher.quickstart.controllers_services_repositories.student;
 
+import com.johnteacher.quickstart.controllers_services_repositories.school.School;
 import org.springframework.stereotype.Service;
 
 // this service is responsible for mapping or creating mapping for our students

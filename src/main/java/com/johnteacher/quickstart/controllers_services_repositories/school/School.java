@@ -1,6 +1,7 @@
-package com.johnteacher.quickstart;
+package com.johnteacher.quickstart.controllers_services_repositories.school;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.johnteacher.quickstart.controllers_services_repositories.student.Student;
 import jakarta.persistence.*;
 
 import java.util.List;

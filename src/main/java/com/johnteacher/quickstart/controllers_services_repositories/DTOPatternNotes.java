@@ -1,4 +1,4 @@
-package com.johnteacher.quickstart;
+package com.johnteacher.quickstart.controllers_services_repositories;
 
 public class DTOPatternNotes {
 
@@ -28,6 +28,15 @@ Introducing services (helps code reusability and separates concerns)
  - - controller handles HTTP requests
  - - repositories handle data persistence and retrieval
  - - services sit between the two, ensuring business logic and application specific operations are separate from other layers
+ */
+
+/*
+The next part of the course is validating the data (i.e. no invalid data like null values for a person's ID)
+ - malicious users can spam send attacks to flood database with invalid data (we need to prevent this)
+ - Can cause errors when you might recieve a number instead of a string
+ - Greatly improve user experience, let's them know they did something wrong and why
+ - Validation can help performance against poorly/incorrectly formatted data
+
  */
 
 }

@@ -1,4 +1,4 @@
-package com.johnteacher.quickstart;
+package com.johnteacher.quickstart.controllers_services_repositories.school;
 
 import org.springframework.stereotype.Service;
 
