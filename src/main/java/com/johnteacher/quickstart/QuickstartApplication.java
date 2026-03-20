@@ -12,5 +12,4 @@ public class QuickstartApplication {
     public static void main(String[] args) {
         SpringApplication.run(QuickstartApplication.class, args);
     }
-    //test
 }
